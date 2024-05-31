@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { Author } from './author.entity';
-import { Sales } from './sales.entity';
+import { Author } from '../../author/entity/author.entity';
+import { Sales } from '../../sales/entity/sales.entity';
 
 
 @Entity()
