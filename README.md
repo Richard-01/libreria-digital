@@ -2,35 +2,39 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
+# Digital Library API
 ## Description
+This API provides functionalities for managing a digital library, allowing CRUD operations on books, authors, and sales. It also includes capabilities for pagination, filtering, and sorting, as well as data validations and appropriate response codes.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Table of Contents
+- [Description](#description)
+- [Installation and Setup](#installation-and-setup)
+- [Running the App](#running-the-app)
+- [Usage](#usage)
+  - [Available Endpoints](#available-endpoints)
+  - [API Documentation](#api-documentation)
+- [Project Structure](#project-structure)
+- [Contribution](#contribution)
+- [Author](#author)
 
-## Installation
+## Installation and Setup
+1. Clone this repository to your local machine:
+    ```bash
+    git clone https://github.com/Richard-01/libreria-digital.git
+    cd libreria-digital
+    ```
+2. Install dependencies using the command:
+    ```bash
+    npm install
+    ```
+3. Create a `.env` file based on the `.env.example` file and fill in the required environment variables.
 
-```bash
-$ npm install
-```
+- `DB_USER`: Default database user.
+- `DB_HOST`: Hostname or IP address of the database server.
+- `DB_PASSWORD`: Password for the database user.
+- `DB_NAME`: Name of the database.
+- `DB_PORT`: Port number for the database server.
 
 ## Running the app
 
@@ -45,29 +49,92 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Installation and Setup
+1. Clone this repository to your local machine.
+2. Install dependencies using the command `npm install`.
+3. Configure your PostgreSQL or MySQL database and update the configuration in the `config.ts` file.
+4. Start the application using the command `npm run start`.
 
-```bash
-# unit tests
-$ npm run test
+## Usage
+### Available Endpoints
+- `GET /books`: Get all available books.
+- `GET /books/:id`: Get a specific book by its ID.
+- `POST /books`: Create a new book.
+- `PUT /books/:id`: Update an existing book.
+- `DELETE /books/:id`: Delete a book by its ID.
+- `GET /authors`: Get all available authors.
+- `GET /authors/:id`: Get a specific author by its ID.
+- `POST /authors`: Create a new author.
+- `PUT /authors/:id`: Update an existing author.
+- `DELETE /authors/:id`: Delete an author by its ID.
+- `GET /sales`: Get all available sales.
+- `GET /sales/:id`: Get a specific sale by its ID.
+- `POST /sales`: Register a new sale.
+- `PUT /sales/:id`: Update an existing sale.
+- `DELETE /sales/:id`: Delete a sale by its ID.
 
-# e2e tests
-$ npm run test:e2e
+### API Documentation
+The API documentation is available in Swagger. After running the application, visit `http://localhost:3000/api-docs` in your browser to access the documentation.
 
-# test coverage
-$ npm run test:cov
+## Project Structure
+```
+src/
+|-- author/
+|   |-- dto/                       
+|   |   |-- create-author.dto.ts     # DTO for creating an author
+|   |   |-- update-author.dto.ts     # DTO for updating an author
+|   |-- entities/                   
+|   |   |-- author.entity.ts         # Author entity definition
+|   |-- controllers/
+|   |   |-- author.controller.ts     # Controller for author operations
+|   |-- services/
+|   |   |-- author.service.ts        # Service for author operations
+|   |-- author.module.ts             # Module for author-related functionalities
+|
+|-- book/
+|   |-- dto/                       
+|   |   |-- create-book.dto.ts       # DTO for creating a book
+|   |   |-- update-book.dto.ts       # DTO for updating a book
+|   |-- entities/                   
+|   |   |-- book.entity.ts           # Book entity definition
+|   |-- controllers/
+|   |   |-- book.controller.ts       # Controller for book operations
+|   |-- services/
+|   |   |-- book.service.ts          # Service for book operations
+|   |-- book.module.ts               # Module for book-related functionalities
+|
+|-- sales/
+|   |-- dto/                       
+|   |   |-- create-sale.dto.ts       # DTO for creating a sale
+|   |   |-- update-sale.dto.ts       # DTO for updating a sale
+|   |-- entities/                   
+|   |   |-- sale.entity.ts           # Sale entity definition
+|   |-- controllers/
+|   |   |-- sale.controller.ts       # Controller for sales operations
+|   |-- services/
+|   |   |-- sale.service.ts          # Service for sale operations
+|   |-- sale.module.ts               # Module for sale-related functionalities
+|
+|-- common/
+|   |-- guards/
+|   |   |-- time.guard.ts            # Guard for time-based route protection
+|
+|-- config/
+|   |-- configDB.ts                  # Configuration file for database and other settings
+|
+|-- app.module.ts                    # Main application module
+|-- main.ts                          # Application entry point
+|-- ...                              # Other files and folders
+
 ```
 
-## Support
+## Contribution
+To contribute to this project, follow these steps:
+1. Fork this repository.
+2. Create a new branch with the prefix `Feature/` followed by your feature name.
+3. Make your changes and tests.
+4. Make a pull request to the `Develop` branch of this repository.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Author - [Richard Montoya](https://github.com/Richard-01)
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

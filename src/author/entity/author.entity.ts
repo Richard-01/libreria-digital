@@ -9,6 +9,9 @@ export class Author {
   @Column()
   name: string;
 
+  @Column()
+  lastName: string;
+
   @ManyToMany(() => Book, book => book.authors)
   books: Book[];
 }
