@@ -6,7 +6,7 @@ import { CreateAuthorDto } from '../dto/createAuthorDto';
 import { UpdateAuthorDto } from '../dto/updateAuthorDto';
 
 @Injectable()
-export class ServicesService {
+export class SalesService {
     constructor(@InjectRepository(Author) private readonly authorRepository: Repository<Author>) {}
 
     async create(createAuthorDto: CreateAuthorDto): Promise<Author> {
